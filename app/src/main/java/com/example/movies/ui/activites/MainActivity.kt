@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                moviesViewModel.loadMovies("aquaman","d2e11186")
+                moviesViewModel.loadMovies("sky","d2e11186")
                 return@OnNavigationItemSelectedListener true
             }
         }
