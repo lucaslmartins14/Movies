@@ -1,5 +1,6 @@
-package com.example.movies.api.Interfaces
+package com.example.movies.api
 
+import com.example.movies.api.interfaces.GetMovieDataService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

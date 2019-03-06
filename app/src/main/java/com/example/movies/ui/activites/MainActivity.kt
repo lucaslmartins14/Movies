@@ -1,7 +1,11 @@
 package com.example.movies.ui.activites
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -12,6 +16,8 @@ import com.example.movies.R
 import com.example.movies.ui.adapters.MoviesAdapter
 import com.example.movies.viewmodels.MoviesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.dialog_search.*
+import kotlinx.android.synthetic.main.dialog_search.view.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var moviesViewModel: MoviesViewModel
@@ -38,16 +44,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
+        setSupportActionBar(main_toolbar)
         recycler_view.adapter = moviesAdapter
         recycler_view.layoutManager = GridLayoutManager(this, 2)
 
         //inicializar o viewmodel
         moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
-
+        moviesViewModel.loadMovies("batman","d2e11186")
         moviesViewModel.getMovies().observe(this, Observer {data ->
             data?.let {
                 if (it.isEmpty())
@@ -57,6 +64,31 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        moviesViewModel.loadMovies("batman","d2e11186")
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item!!.itemId == R.id.action_search) {
+            dialogSearchMovie()
+        }
+            return super.onOptionsItemSelected(item)
+    }
+
+    private fun dialogSearchMovie() {
+        val layout = LayoutInflater.from(this).inflate(R.layout.dialog_search, null, false)
+        val title = layout.input_title
+        val dialog = AlertDialog.Builder(this)
+
+        dialog.setView(layout)
+        dialog.setNegativeButton("Cancel", null)
+        dialog.setPositiveButton("OK") {d, i ->
+            val title_recieved = title.text.toString()
+            moviesViewModel.loadMovies(title_recieved,"d2e11186")
+        }
+        dialog.create().show()
     }
 }

@@ -1,4 +1,4 @@
-package com.example.movies.api.Interfaces
+package com.example.movies.api.interfaces
 
 import com.example.movies.data.Movie
 import com.example.movies.data.MovieList
