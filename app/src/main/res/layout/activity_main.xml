@@ -8,14 +8,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.activites.MainActivity">
-    <androidx.recyclerview.widget.RecyclerView
+    <FrameLayout
             android:layout_marginTop="?attr/actionBarSize"
-            android:layout_marginBottom="?attr/actionBarSize"
-            android:id="@+id/recycler_view"
+            android:layout_marginBottom="56dp"
+            android:id="@+id/fragment_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+    </FrameLayout>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/main_toolbar"
@@ -33,7 +33,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation"
             android:layout_width="0dp"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="56dp"
             android:layout_marginEnd="0dp"
             android:layout_marginStart="0dp"
             android:background="?android:attr/windowBackground"
