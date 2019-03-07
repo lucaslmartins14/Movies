@@ -1,4 +1,4 @@
-package com.example.movies
+package com.example.movies.ui
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

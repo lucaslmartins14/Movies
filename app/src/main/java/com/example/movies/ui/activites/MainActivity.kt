@@ -99,7 +99,10 @@ class MainActivity : AppCompatActivity() {
         dialog.setNegativeButton("Cancel", null)
         dialog.setPositiveButton("OK") {d, i ->
             val title_recieved = title.text.toString()
+            val bundle =  Bundle()
+            bundle.putString("title_recived", title_recieved)
             val moviesSearchedFragment =  MoviesSearchedFragment()
+            moviesSearchedFragment.arguments = bundle
             val transaction : FragmentTransaction
             transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, moviesSearchedFragment)
             transaction.commit()

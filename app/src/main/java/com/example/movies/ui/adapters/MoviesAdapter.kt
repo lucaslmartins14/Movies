@@ -3,15 +3,11 @@ package com.example.movies.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.movies.data.Movie
 import com.example.movies.R
 import kotlinx.android.synthetic.main.item_movie.view.*
-import com.bumptech.glide.module.AppGlideModule
-import com.bumptech.glide.annotation.GlideModule;
-import com.example.movies.DownloadImageWithURLTask
+import com.example.movies.ui.DownloadImageWithURLTask
 
 
 class MoviesViewHolder(val view: View): RecyclerView.ViewHolder(view){

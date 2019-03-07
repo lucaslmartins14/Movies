@@ -38,10 +38,11 @@ class MoviesSearchedFragment : androidx.fragment.app.Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val title_recived = arguments!!.getString("title_recived")
         recycler_view.adapter = moviesAdapter
         recycler_view.layoutManager = GridLayoutManager(activity, 2)
         moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
-        moviesViewModel.loadMovies("deadpool","d2e11186")
+        moviesViewModel.loadMovies(title_recived,"d2e11186")
         moviesViewModel.getMovies().observe(this, Observer {data ->
             data?.let {
                 if (it.isEmpty())
