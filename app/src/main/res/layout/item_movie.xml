@@ -11,15 +11,15 @@
         android:layout_marginRight="10dp"
         app:cardElevation="3dp"
         app:cardUseCompatPadding="false"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="10dp"
+        android:clickable="true">
 
 
     <RelativeLayout
             android:id="@+id/relative_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
-    >
+            android:background="#FFFFFF">
 
         <ImageView
 

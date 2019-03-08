@@ -19,7 +19,13 @@ data class Movie
 
     @SerializedName("Type")
     @Expose
-    var type: String
+    var type: String,
 
+    @SerializedName ("imdbID")
+    @Expose
+    var  imdbid: String,
 
+    @SerializedName ("Plot")
+    @Expose
+    var plot: String
 )

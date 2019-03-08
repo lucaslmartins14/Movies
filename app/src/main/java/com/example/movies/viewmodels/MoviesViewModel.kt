@@ -11,11 +11,20 @@ class MoviesViewModel: ViewModel() {
 
     private var mMovies = MutableLiveData<List<Movie>>()
 
+    private var mMovieDetail = MutableLiveData<Movie>()
     fun getMovies(): LiveData<List<Movie>> = mMovies
 
     fun loadMovies(s: String, apikey: String){
             mMovies = movieManager.getMovies(s, apikey)
-
-
     }
+
+    fun getMovieDetail(): LiveData<Movie> = mMovieDetail
+
+    fun loadMovieDetail(i: String, apikey: String)
+    {
+        mMovieDetail = movieManager.getMovieDetail(i,apikey)
+    }
+
+
+
 }

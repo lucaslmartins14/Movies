@@ -10,5 +10,8 @@ interface GetMovieDataService {
 
     @GET("/")
     abstract fun list(@Query("s") s: String, @Query("apikey") apikey: String): Call<MovieList>
+    @GET("/")
+    abstract fun detail(@Query("i") s: String, @Query("apikey") apikey: String): Call<Movie>
+
 
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -24,23 +25,18 @@ class MainActivity : AppCompatActivity() {
     }
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_home -> {
+            R.id.navigation_movies -> {
                 val movieFragment =  MovieFragment()
                 val transaction : FragmentTransaction
                 transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, movieFragment)
                 transaction.commit()
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard -> {
-                val movieDetails = MovieDetails()
-                val transaction: FragmentTransaction
-                transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, movieDetails)
-                transaction.commit()
-                return@OnNavigationItemSelectedListener true
+            R.id.navigation_series -> {
+            Toast.makeText(this,"Coming soon!!" , Toast.LENGTH_LONG)
             }
-            R.id.navigation_notifications -> {
-                moviesViewModel.loadMovies("sky","d2e11186")
-                return@OnNavigationItemSelectedListener true
+            R.id.navigation_games -> {
+            Toast.makeText(applicationContext,"Coming soon!!" , Toast.LENGTH_LONG)
             }
         }
         false
@@ -74,23 +70,10 @@ class MainActivity : AppCompatActivity() {
 */
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item!!.itemId == R.id.action_search) {
-            dialogSearchMovie()
-        }
-            return super.onOptionsItemSelected(item)
-    }
-
     private fun dialogSearchMovie() {
         val layout = LayoutInflater.from(this).inflate(R.layout.dialog_search, null, false)
         val title = layout.input_title
         val dialog = AlertDialog.Builder(this)
-
         dialog.setView(layout)
         dialog.setNegativeButton("Cancel", null)
         dialog.setPositiveButton("OK") {d, i ->

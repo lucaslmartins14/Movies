@@ -35,7 +35,7 @@ class MovieFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        recycler_view.adapter = moviesAdapter
+
         recycler_view.layoutManager = GridLayoutManager(activity, 2)
         moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
         moviesViewModel.loadMovies("batman","d2e11186")
@@ -44,6 +44,8 @@ class MovieFragment : Fragment() {
                 if (it.isEmpty())
                     Toast.makeText(activity,"Lista vazia", Toast.LENGTH_LONG).show()
                 else
+
+                    recycler_view.adapter = moviesAdapter
                     moviesAdapter.add(it)
             }
         })
