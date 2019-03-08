@@ -11,7 +11,15 @@ data class Movie
 
     @SerializedName("Poster")
     @Expose
-    var poster: String
+    var poster: String,
+
+    @SerializedName("Year")
+    @Expose
+    var year: String,
+
+    @SerializedName("Type")
+    @Expose
+    var type: String
 
 
 )

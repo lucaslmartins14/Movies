@@ -1,26 +1,20 @@
 package com.example.movies.ui.activites
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movies.R
 import com.example.movies.ui.adapters.MoviesAdapter
+import com.example.movies.ui.fragments.MovieDetails
 import com.example.movies.ui.fragments.MovieFragment
 import com.example.movies.ui.fragments.MoviesSearchedFragment
 import com.example.movies.viewmodels.MoviesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.dialog_search.*
 import kotlinx.android.synthetic.main.dialog_search.view.*
 
 class MainActivity : AppCompatActivity() {
@@ -33,12 +27,15 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_home -> {
                 val movieFragment =  MovieFragment()
                 val transaction : FragmentTransaction
-                transaction = supportFragmentManager.beginTransaction().add(R.id.fragment_content, movieFragment)
+                transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, movieFragment)
                 transaction.commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                moviesViewModel.loadMovies("spiderman","d2e11186")
+                val movieDetails = MovieDetails()
+                val transaction: FragmentTransaction
+                transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, movieDetails)
+                transaction.commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
@@ -53,12 +50,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        setSupportActionBar(main_toolbar)
+        //setSupportActionBar(main_toolbar)
         val movieFragment =  MovieFragment()
         val transaction : FragmentTransaction
-        transaction = supportFragmentManager.beginTransaction().add(R.id.fragment_content, movieFragment)
+        transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, movieFragment)
         transaction.commit()
         /*
         recycler_view.adapter = moviesAdapter

@@ -20,6 +20,7 @@ class MoviesViewHolder(val view: View): RecyclerView.ViewHolder(view){
         else
         downloadImage.execute("https://pbs.twimg.com/profile_images/1826025214/atheism2_400x400.png")
         tv_movie.text = item.title
+        tv_type.text = item.type.toUpperCase()
     }
 
     }

@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                                   xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
-              android:layout_width="150dp"
-              android:layout_height="190dp">
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="false"
+        app:cardCornerRadius="10dp">
 
 
-    <LinearLayout
+    <RelativeLayout
+            android:id="@+id/relative_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/cardview_dark_background"
-            android:orientation="vertical">
+            android:background="#FFFFFF"
+    >
 
         <ImageView
+
                 android:id="@+id/iv_movie"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:scaleType="centerCrop" tools:srcCompat="@android:color/holo_purple"/>
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@android:color/darker_gray"/>
 
         <TextView
+                android:background="@android:color/background_light"
                 android:id="@+id/tv_movie"
+                android:layout_marginTop="190dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:text="Titulo"
-                android:textSize="13dp"
+                android:text="Title"
+                android:textColor="@android:color/background_dark"
+                android:textSize="12sp"
                 android:textAlignment="center"
-                android:layout_marginBottom="1dp"/>
+                android:layout_alignParentStart="true"/>
+        <TextView
+                android:textColor="@android:color/background_light"
+                android:text="YEAR"
+                android:background="@drawable/screen_border"
+                android:textAlignment="center"
+                android:layout_marginTop="170dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="58dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_type"/>
 
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView >
