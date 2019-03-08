@@ -38,7 +38,7 @@ class MovieFragment : Fragment() {
 
         recycler_view.layoutManager = GridLayoutManager(activity, 2)
         moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
-        moviesViewModel.loadMovies("batman","d2e11186")
+        moviesViewModel.loadMovies("deadpool","d2e11186", "movie")
         moviesViewModel.getMovies().observe(this, Observer {data ->
             data?.let {
                 if (it.isEmpty())

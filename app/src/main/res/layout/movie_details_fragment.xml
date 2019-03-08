@@ -2,9 +2,9 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".ui.fragments.MovieDetails">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
                 app:contentScrim="@color/colorPrimaryDark"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
                 app:collapsedTitleTextAppearance="@android:color/transparent"
                 android:fitsSystemWindows="true">
             <ImageView
@@ -46,6 +46,8 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+
 
         <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -54,13 +56,13 @@
                 app:cardUseCompatPadding="true">
 
             <RelativeLayout
-                    android:layout_width="411dp"
-                    android:layout_height="369dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
                 <ImageView
                         android:src="@drawable/ic_movie_creation_black_24dp"
-                        android:layout_width="101dp"
-                        android:layout_height="99dp" android:layout_alignParentStart="true"
-                        android:layout_marginStart="7dp" android:layout_alignParentTop="true"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" android:layout_alignParentStart="true"
+                        android:layout_marginStart="5dp" android:layout_alignParentTop="true"
                         android:id="@+id/iv_movie_icon" android:layout_marginTop="0dp"
                         android:background="@android:color/darker_gray"/>
                 <TextView
@@ -69,7 +71,7 @@
                         android:textAlignment="center"
                         android:layout_width="85dp"
                         android:layout_height="wrap_content" android:layout_alignParentStart="true"
-                        android:layout_marginStart="116dp" android:layout_alignParentTop="true"
+                        android:layout_marginStart="115dp" android:layout_alignParentTop="true"
                         android:id="@+id/tv_type_detail" android:layout_marginTop="1dp"
                         android:background="@drawable/screen_border"
                         android:textColor="@android:color/background_light"/>
@@ -78,27 +80,29 @@
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:textAllCaps="true"
-                        android:layout_width="287dp"
-                        android:layout_height="37dp" android:layout_alignParentStart="true"
-                        android:layout_marginStart="117dp" android:layout_alignParentTop="true"
+                        android:layout_width="280dp"
+                        android:layout_height="35dp" android:layout_alignParentStart="true"
+                        android:layout_marginStart="115dp" android:layout_alignParentTop="true"
                         android:id="@+id/tv_title_detail" android:layout_marginTop="25dp"/>
                 <TextView
                         android:text="2018"
                         android:textSize="14sp"
-                        android:layout_width="99dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content" android:layout_alignParentStart="true"
-                        android:layout_marginStart="117dp" android:layout_alignParentTop="true"
-                        android:id="@+id/tv_year_detail" android:layout_marginTop="67dp"/>
-                <TextView
-                        android:text="Movie Plot"
-                        android:layout_width="387dp"
-                        android:layout_height="wrap_content" android:layout_alignParentStart="true"
-                        android:layout_marginStart="9dp" android:layout_alignParentTop="true"
-                        android:id="@+id/tv_movie_plot_detail" android:layout_marginTop="164dp"
-                        android:textSize="30dp"/>
+                        android:layout_marginStart="115dp" android:layout_alignParentTop="true"
+                        android:id="@+id/tv_year_detail" android:layout_marginTop="65dp"/>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
-
+            <TextView
+                    android:id="@+id/tv_movie_plot_detail"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="Movie Plot"
+                    android:textSize="20sp"
+                    android:layout_marginTop="140dp"
+                    android:layout_marginStart="5dp"/>
+        </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

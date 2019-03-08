@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface GetMovieDataService {
 
     @GET("/")
-    abstract fun list(@Query("s") s: String, @Query("apikey") apikey: String): Call<MovieList>
+    abstract fun list(@Query("s") s: String, @Query("apikey") apikey: String, @Query("type") type: String): Call<MovieList>
     @GET("/")
     abstract fun detail(@Query("i") s: String, @Query("apikey") apikey: String): Call<Movie>
 

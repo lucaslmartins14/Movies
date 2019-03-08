@@ -14,8 +14,8 @@ class MoviesViewModel: ViewModel() {
     private var mMovieDetail = MutableLiveData<Movie>()
     fun getMovies(): LiveData<List<Movie>> = mMovies
 
-    fun loadMovies(s: String, apikey: String){
-            mMovies = movieManager.getMovies(s, apikey)
+    fun loadMovies(s: String, apikey: String, type: String){
+            mMovies = movieManager.getMovies(s, apikey, type)
     }
 
     fun getMovieDetail(): LiveData<Movie> = mMovieDetail

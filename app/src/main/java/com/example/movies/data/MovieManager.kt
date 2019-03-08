@@ -13,8 +13,8 @@ class MovieManager() {
 
     private val dataMovieList: MutableLiveData<List<Movie>> = MutableLiveData()
     private val dataMovieDetail: MutableLiveData<Movie> = MutableLiveData()
-    fun getMovies(s: String, apikey: String): MutableLiveData<List<Movie>> {
-    call.list(s,apikey).clone().enqueue(object : Callback<MovieList> {
+    fun getMovies(s: String, apikey: String, type: String): MutableLiveData<List<Movie>> {
+    call.list(s,apikey,type).clone().enqueue(object : Callback<MovieList> {
         override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
             Log.d("OnResponse","RESPONSE")
             dataMovieList.postValue(response.body()?.search)

@@ -12,10 +12,11 @@ import androidx.lifecycle.Observer
 import com.example.movies.R
 import com.example.movies.ui.DownloadImageWithURLTask
 import com.example.movies.viewmodels.MoviesViewModel
-import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlinx.android.synthetic.main.movie_details_fragment.*
 
 class MovieDetails : Fragment() {
+
+
 
     companion object {
         fun newInstance() = MovieDetails()
@@ -32,6 +33,7 @@ class MovieDetails : Fragment() {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+
         super.onActivityCreated(savedInstanceState)
         if(activity is AppCompatActivity){
             (activity as AppCompatActivity).setSupportActionBar(toolbar)

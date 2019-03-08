@@ -2,18 +2,13 @@ package com.example.movies.ui.activites
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.example.movies.R
 import com.example.movies.ui.adapters.MoviesAdapter
-import com.example.movies.ui.fragments.MovieDetails
-import com.example.movies.ui.fragments.MovieFragment
-import com.example.movies.ui.fragments.MoviesSearchedFragment
+import com.example.movies.ui.fragments.*
 import com.example.movies.viewmodels.MoviesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_search.view.*
@@ -33,10 +28,18 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_series -> {
-            Toast.makeText(this,"Coming soon!!" , Toast.LENGTH_LONG)
+                val seriesFragment =  SeriesFragment()
+                val transaction : FragmentTransaction
+                transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, seriesFragment)
+                transaction.commit()
+                return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_games -> {
-            Toast.makeText(applicationContext,"Coming soon!!" , Toast.LENGTH_LONG)
+                val gameFragment =  GameFragment()
+                val transaction : FragmentTransaction
+                transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, gameFragment)
+                transaction.commit()
+                return@OnNavigationItemSelectedListener true
             }
         }
         false
@@ -52,22 +55,6 @@ class MainActivity : AppCompatActivity() {
         val transaction : FragmentTransaction
         transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, movieFragment)
         transaction.commit()
-        /*
-        recycler_view.adapter = moviesAdapter
-        recycler_view.layoutManager = GridLayoutManager(this, 2)
-
-        //inicializar o viewmodel
-        moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
-        moviesViewModel.loadMovies("batman","d2e11186")
-        moviesViewModel.getMovies().observe(this, Observer {data ->
-            data?.let {
-                if (it.isEmpty())
-                    Toast.makeText(this,"Lista vazia",Toast.LENGTH_LONG).show()
-                else
-                moviesAdapter.add(it)
-            }
-        })
-*/
     }
 
     private fun dialogSearchMovie() {
@@ -88,4 +75,5 @@ class MainActivity : AppCompatActivity() {
         }
         dialog.create().show()
     }
+
 }
