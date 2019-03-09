@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import android.util.Log
 import android.widget.ImageView
+import androidx.core.graphics.createBitmap
+import androidx.core.graphics.scale
 
 class DownloadImageWithURLTask(var bmImage: ImageView) : AsyncTask<String, Void, Bitmap>() {
 
@@ -13,12 +15,13 @@ class DownloadImageWithURLTask(var bmImage: ImageView) : AsyncTask<String, Void,
         var bitmap: Bitmap? = null
         try {
             val `in` = java.net.URL(pathToFile).openStream()
+
             bitmap = BitmapFactory.decodeStream(`in`)
         } catch (e: Exception) {
             Log.e("Error", e.message)
             e.printStackTrace()
         }
-
+        bitmap?.scale(410,350,true)
         return bitmap
     }
 
