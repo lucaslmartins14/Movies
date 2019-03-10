@@ -1,10 +1,16 @@
 package com.example.movies.ui.activites
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuItemImpl
+import androidx.core.graphics.blue
+import androidx.core.graphics.toColor
 import androidx.fragment.app.FragmentTransaction
 import com.example.movies.R
 import com.example.movies.ui.adapters.MoviesAdapter
@@ -12,6 +18,7 @@ import com.example.movies.ui.fragments.*
 import com.example.movies.viewmodels.MoviesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_search.view.*
+import org.koin.ext.checkedStringValue
 
 class MainActivity : AppCompatActivity() {
     private lateinit var moviesViewModel: MoviesViewModel
@@ -24,21 +31,23 @@ class MainActivity : AppCompatActivity() {
                 val movieFragment =  MovieFragment()
                 val transaction : FragmentTransaction
                 transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, movieFragment)
-                transaction.commit()
+                transaction.addToBackStack(null).commit()
+                item.setCheckable(true)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_series -> {
                 val seriesFragment =  SeriesFragment()
                 val transaction : FragmentTransaction
                 transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, seriesFragment)
-                transaction.commit()
+                transaction.addToBackStack(null).commit()
+                item.setCheckable(true)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_games -> {
-                val gameFragment =  GameFragment()
+            R.id.navigation_favorites -> {
+                val favoriteFragment =  FavoriteFragment()
                 val transaction : FragmentTransaction
-                transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, gameFragment)
-                transaction.commit()
+                transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, favoriteFragment)
+                transaction.addToBackStack(null).commit()
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -47,14 +56,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation.selectedItemId = R.id.navigation_movies
         //setSupportActionBar(main_toolbar)
-        val movieFragment =  MovieFragment()
-        val transaction : FragmentTransaction
-        transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, movieFragment)
-        transaction.commit()
+       // val movieFragment =  MovieFragment()
+        //val transaction : FragmentTransaction
+        //transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, movieFragment)
+        //transaction.commit()
     }
 
     private fun dialogSearchMovie() {
@@ -74,6 +83,20 @@ class MainActivity : AppCompatActivity() {
             transaction.commit()
         }
         dialog.create().show()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            android.R.id.home -> onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+
+
     }
 
 }

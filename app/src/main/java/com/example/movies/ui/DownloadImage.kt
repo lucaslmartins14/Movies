@@ -21,7 +21,6 @@ class DownloadImageWithURLTask(var bmImage: ImageView) : AsyncTask<String, Void,
             Log.e("Error", e.message)
             e.printStackTrace()
         }
-        bitmap?.scale(410,350,true)
         return bitmap
     }
 

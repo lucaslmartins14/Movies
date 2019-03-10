@@ -53,7 +53,7 @@ class MoviesAdapter(val data: MutableList<Movie> = mutableListOf()): RecyclerVie
             val activity = it.context as AppCompatActivity
             val transaction : FragmentTransaction
             transaction = activity.supportFragmentManager.beginTransaction().replace(R.id.fragment_content, movieDetails)
-            transaction.commit()
+            transaction.addToBackStack(null).commit()
 
 
         }

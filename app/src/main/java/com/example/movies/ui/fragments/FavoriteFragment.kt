@@ -15,10 +15,10 @@ import com.example.movies.ui.adapters.MoviesAdapter
 import com.example.movies.viewmodels.MoviesViewModel
 import kotlinx.android.synthetic.main.movie_fragment.*
 
-class GameFragment : Fragment() {
+class FavoriteFragment : Fragment() {
 
     companion object {
-        fun newInstance() = GameFragment()
+        fun newInstance() = FavoriteFragment()
     }
 
     private lateinit var moviesViewModel: MoviesViewModel
