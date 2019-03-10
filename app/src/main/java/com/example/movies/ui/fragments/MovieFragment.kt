@@ -1,6 +1,5 @@
 package com.example.movies.ui.fragments
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -42,7 +41,7 @@ class MovieFragment : Fragment() {
         moviesViewModel.getMovies().observe(this, Observer {data ->
             data?.let {
                 if (it.isEmpty())
-                    Toast.makeText(activity,"Lista vazia", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity,"Empty List!!", Toast.LENGTH_LONG).show()
                 else
 
                     recycler_view.adapter = moviesAdapter

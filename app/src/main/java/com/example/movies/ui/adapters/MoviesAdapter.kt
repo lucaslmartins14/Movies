@@ -5,17 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movies.data.Movie
 import com.example.movies.R
 import kotlinx.android.synthetic.main.item_movie.view.*
 import com.example.movies.ui.DownloadImageWithURLTask
-import com.example.movies.ui.activites.MainActivity
 import com.example.movies.ui.fragments.MovieDetails
-import com.example.movies.ui.fragments.MovieFragment
-import javax.xml.namespace.NamespaceContext
 
 
 class MoviesViewHolder(val view: View): RecyclerView.ViewHolder(view){
@@ -25,9 +21,9 @@ class MoviesViewHolder(val view: View): RecyclerView.ViewHolder(view){
         if (item.poster != "N/A")
         downloadImage.execute(item.poster)
         else
-        downloadImage.execute("https://pbs.twimg.com/profile_images/1826025214/atheism2_400x400.png")
+        downloadImage.execute("https://t3.ftcdn.net/jpg/01/09/49/08/240_F_109490811_fDzc0dpSLS0TmoNu4WP34aozBcI6FKZl.jpg")
         tv_movie.text = item.title
-        tv_type.text = item.type.toUpperCase()
+        tv_type.text = item.type
 
 
     }
@@ -44,7 +40,6 @@ class MoviesAdapter(val data: MutableList<Movie> = mutableListOf()): RecyclerVie
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         holder.bindView(data[position])
-        val cardView = R.layout.item_movie
         holder.view.setOnClickListener() {
             val bundle = Bundle()
             bundle.putString("imdbid_recived", data[position].imdbid)

@@ -3,6 +3,7 @@
           package="com.example.movies">
 <uses-permission android:name="android.permission.INTERNET"/>
     <application
+            android:screenOrientation="portrait"
             android:name=".MyApplication"
             android:usesCleartextTraffic="true"
             android:allowBackup="true"

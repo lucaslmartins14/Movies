@@ -3,7 +3,6 @@ package com.example.movies.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.movies.data.Database
 import com.example.movies.data.Movie
 import com.example.movies.data.MovieManager
 

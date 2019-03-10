@@ -2,20 +2,15 @@ package com.example.movies.ui.fragments
 
 
 import android.os.Bundle
-import android.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.movies.R
 import com.example.movies.ui.adapters.MoviesAdapter
 import com.example.movies.viewmodels.MoviesViewModel
-import kotlinx.android.synthetic.main.dialog_search.view.*
-import kotlinx.android.synthetic.main.item_movie.*
 import kotlinx.android.synthetic.main.movie_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -46,7 +41,7 @@ class MoviesSearchedFragment : androidx.fragment.app.Fragment() {
         moviesViewModel.getMovies().observe(this, Observer {data ->
             data?.let {
                 if (it.isEmpty())
-                    Toast.makeText(activity,"Lista vazia", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity,"Empty List!!", Toast.LENGTH_LONG).show()
                 else
                     moviesAdapter.add(it)
             }

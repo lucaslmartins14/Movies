@@ -1,6 +1,5 @@
 package com.example.movies.ui.fragments
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -38,11 +37,11 @@ class FavoriteFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         recycler_view.layoutManager = GridLayoutManager(activity, 2)
-        moviesViewModel.loadMovies("fortnite","d2e11186", "game")
+        moviesViewModel.loadMovies("spiderman","d2e11186", "movie")
         moviesViewModel.getMovies().observe(this, Observer {data ->
             data?.let {
                 if (it.isEmpty())
-                    Toast.makeText(activity,"Lista vazia", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity,"Empty List!!", Toast.LENGTH_LONG).show()
                 else
 
                     recycler_view.adapter = moviesAdapter

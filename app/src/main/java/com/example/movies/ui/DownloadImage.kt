@@ -5,8 +5,6 @@ import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import android.util.Log
 import android.widget.ImageView
-import androidx.core.graphics.createBitmap
-import androidx.core.graphics.scale
 
 class DownloadImageWithURLTask(var bmImage: ImageView) : AsyncTask<String, Void, Bitmap>() {
 

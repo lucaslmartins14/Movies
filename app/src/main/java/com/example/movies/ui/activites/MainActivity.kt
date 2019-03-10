@@ -1,24 +1,17 @@
 package com.example.movies.ui.activites
 
-import android.graphics.Color
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.menu.MenuItemImpl
-import androidx.core.graphics.blue
-import androidx.core.graphics.toColor
 import androidx.fragment.app.FragmentTransaction
 import com.example.movies.R
-import com.example.movies.ui.adapters.MoviesAdapter
 import com.example.movies.ui.fragments.*
-import com.example.movies.viewmodels.MoviesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_search.view.*
-import org.koin.ext.checkedStringValue
 
 class MainActivity : AppCompatActivity() {
 
@@ -56,11 +49,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = R.id.navigation_movies
-        //setSupportActionBar(main_toolbar)
-       // val movieFragment =  MovieFragment()
-        //val transaction : FragmentTransaction
-        //transaction = supportFragmentManager.beginTransaction().replace(R.id.fragment_content, movieFragment)
-        //transaction.commit()
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
     }
 
     private fun dialogSearchMovie() {
@@ -89,11 +79,5 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onResume() {
-        super.onResume()
-
-
-
-    }
 
 }

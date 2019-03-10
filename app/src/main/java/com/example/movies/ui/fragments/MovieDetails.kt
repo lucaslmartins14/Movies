@@ -1,6 +1,5 @@
 package com.example.movies.ui.fragments
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -55,7 +54,7 @@ class MovieDetails : Fragment() {
             if (it.poster != "N/A")
                 downloadImage.execute(it.poster)
             else
-                downloadImage.execute("https://pbs.twimg.com/profile_images/1826025214/atheism2_400x400.png")
+                downloadImage.execute("https://t3.ftcdn.net/jpg/01/09/49/08/240_F_109490811_fDzc0dpSLS0TmoNu4WP34aozBcI6FKZl.jpg")
 
         })
 
