@@ -37,7 +37,7 @@ class FavoriteFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         recycler_view.layoutManager = GridLayoutManager(activity, 2)
-        moviesViewModel.loadMovies("spiderman","d2e11186", "movie")
+        moviesViewModel.loadMovies("batman","d2e11186", "movie")
         moviesViewModel.getMovies().observe(this, Observer {data ->
             data?.let {
                 if (it.isEmpty())
