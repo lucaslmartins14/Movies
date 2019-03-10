@@ -3,11 +3,11 @@ package com.example.movies.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.movies.data.Database
 import com.example.movies.data.Movie
 import com.example.movies.data.MovieManager
 
-class MoviesViewModel: ViewModel() {
-    private val movieManager = MovieManager()
+class MoviesViewModel(val movieManager: MovieManager): ViewModel() {
 
     private var mMovies = MutableLiveData<List<Movie>>()
 

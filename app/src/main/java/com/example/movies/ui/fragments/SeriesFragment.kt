@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
 
 import com.example.movies.R
 import com.example.movies.ui.adapters.MoviesAdapter
 import com.example.movies.viewmodels.MoviesViewModel
 import kotlinx.android.synthetic.main.movie_fragment.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class SeriesFragment : Fragment() {
 
@@ -21,7 +23,7 @@ class SeriesFragment : Fragment() {
         fun newInstance() = SeriesFragment()
     }
 
-    private lateinit var moviesViewModel: MoviesViewModel
+    private val moviesViewModel: MoviesViewModel by viewModel()
     val moviesAdapter: MoviesAdapter by lazy {
         MoviesAdapter()
     }
@@ -37,7 +39,6 @@ class SeriesFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         recycler_view.layoutManager = GridLayoutManager(activity, 2)
-        moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
         moviesViewModel.loadMovies("super","d2e11186", "series")
         moviesViewModel.getMovies().observe(this, Observer {data ->
             data?.let {

@@ -14,6 +14,7 @@ import com.example.movies.R
 import com.example.movies.ui.adapters.MoviesAdapter
 import com.example.movies.viewmodels.MoviesViewModel
 import kotlinx.android.synthetic.main.movie_fragment.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavoriteFragment : Fragment() {
 
@@ -21,7 +22,7 @@ class FavoriteFragment : Fragment() {
         fun newInstance() = FavoriteFragment()
     }
 
-    private lateinit var moviesViewModel: MoviesViewModel
+    private val moviesViewModel: MoviesViewModel by viewModel()
     val moviesAdapter: MoviesAdapter by lazy {
         MoviesAdapter()
     }
@@ -37,7 +38,6 @@ class FavoriteFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         recycler_view.layoutManager = GridLayoutManager(activity, 2)
-        moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
         moviesViewModel.loadMovies("fortnite","d2e11186", "game")
         moviesViewModel.getMovies().observe(this, Observer {data ->
             data?.let {

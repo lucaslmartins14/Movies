@@ -21,10 +21,7 @@ import kotlinx.android.synthetic.main.dialog_search.view.*
 import org.koin.ext.checkedStringValue
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var moviesViewModel: MoviesViewModel
-    val moviesAdapter: MoviesAdapter by lazy {
-        MoviesAdapter()
-    }
+
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_movies -> {

@@ -13,6 +13,7 @@ import com.example.movies.R
 import com.example.movies.ui.DownloadImageWithURLTask
 import com.example.movies.viewmodels.MoviesViewModel
 import kotlinx.android.synthetic.main.movie_details_fragment.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieDetails : Fragment() {
 
@@ -23,7 +24,7 @@ class MovieDetails : Fragment() {
     }
 
 
-    private lateinit var moviesViewModel: MoviesViewModel
+    private val moviesViewModel: MoviesViewModel by viewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,7 +44,6 @@ class MovieDetails : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.setTitle("")
 
         val id_recived = arguments!!.getString("imdbid_recived")
-        moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
         moviesViewModel.loadMovieDetail(id_recived, "d2e11186")
         moviesViewModel.getMovieDetail().observe(this, Observer {
 

@@ -15,6 +15,7 @@ import com.example.movies.ui.adapters.MoviesAdapter
 import com.example.movies.viewmodels.MoviesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.movie_fragment.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
 
@@ -22,7 +23,7 @@ class MovieFragment : Fragment() {
         fun newInstance() = MovieFragment()
     }
 
-    private lateinit var moviesViewModel: MoviesViewModel
+    private val moviesViewModel: MoviesViewModel by viewModel()
     val moviesAdapter: MoviesAdapter by lazy {
         MoviesAdapter()
     }
@@ -37,7 +38,6 @@ class MovieFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         recycler_view.layoutManager = GridLayoutManager(activity, 2)
-        moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
         moviesViewModel.loadMovies("deadpool","d2e11186", "movie")
         moviesViewModel.getMovies().observe(this, Observer {data ->
             data?.let {
